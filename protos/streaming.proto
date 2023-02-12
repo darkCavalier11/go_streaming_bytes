@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package server_streaming;
+
+option go_package="grpc_streaming/gen";
+
+message MusicRequest {
+  string musicId = 1;
+}
+
+message MusicBytesResponse {
+  bytes musicBytes = 1;
+}
+
+service ServerStreamingService {
+  rpc ServerStreaming(MusicRequest) returns (stream MusicBytesResponse) {};
+}
