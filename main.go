@@ -1,15 +1,16 @@
 package main
 
 import (
-	"fmt"
 	"net/http"
 )
 
 func main() {
-
+	v := make(chan int)
+	_ = v
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		values := r.URL.Query()
-		fmt.Println(values.Get("videoId"))
+		videoId := values.Get("videoId")
+		_ = videoId
 		w.Write([]byte("Hello World"))
 	})
 
